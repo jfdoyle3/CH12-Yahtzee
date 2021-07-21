@@ -14,7 +14,12 @@ public class Yahtzee {
 
     // TODO refactor play to run 5 turns then display total score.
     public void play() {
+        for(int i=0; i<5; i++){
         turn();
+        int score=player.updateScore();
+        System.out.printf("Score:  %d\n", score);
+
+        }
     }
 
     public void getSelections() {
