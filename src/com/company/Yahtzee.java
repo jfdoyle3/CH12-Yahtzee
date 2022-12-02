@@ -23,16 +23,25 @@ public class Yahtzee {
         player = new Player((scanner.nextLine()).trim());
     }
 
-    // TODO refactor play to run 5 turns then display total score.
+
     public void play() {
 
         for (int round = 1; round <= 5; round++) {
-            System.out.println(ANSI_BLUE_UNDERLINED + "\nRound: " + round + ANSI_RESET);
+            System.out.println(ANSI_BLUE_UNDERLINED +
+                                "\nRound: " +
+                                round + ANSI_RESET
+                                );
+
             int score = turn(round);
             finalScore += score;
 
         }
-        System.out.println(ANSI_GREEN_BOLD + "\n\t\t  Final Score: \t" +ANSI_BLACK_BOLD+ finalScore + ANSI_RESET);
+        System.out.println(ANSI_GREEN_BOLD +
+                            "\n\t\t  Final Score: \t" +
+                            ANSI_BLACK_BOLD +
+                            finalScore +
+                            ANSI_RESET
+                            );
     }
 
     public void getSelections() {
@@ -41,7 +50,7 @@ public class Yahtzee {
         player.cup.roll(player.cup.parseSelections(input));
     }
 
-    // TODO refactor turn to update score and display round score *(and total score)
+
     public int turn(int round) {
         player.cup.roll();
 
@@ -51,10 +60,24 @@ public class Yahtzee {
         }
         int score = player.updateScore();
 
-        System.out.println(ANSI_BLACK_BOLD + player.cup.displayCup() + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "\t    Round " + round + " Score:" + ANSI_RESET + "\t" + score);
+        System.out.println(ANSI_BLACK_BOLD +
+                            player.cup.displayCup() +
+                            ANSI_RESET);
+
+        System.out.println(ANSI_GREEN +
+                            "\t    Round " + round +
+                            " Score:" +
+                            ANSI_RESET +
+                            "\t" + score
+                           );
+
         totalScore += score;
-        System.out.println("\t" + ANSI_GREEN_UNDERLINED + "Round Score Total:" + ANSI_RESET + "\t" + totalScore);
+
+        System.out.println("\t" + ANSI_GREEN_UNDERLINED +
+                            "Round Score Total:" +
+                            ANSI_RESET +
+                            "\t" + totalScore
+                           );
         return totalScore;
 
     }
